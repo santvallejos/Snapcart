@@ -1,0 +1,10 @@
+<Solution>
+  <Project Path="Snapcart.Api/Snapcart.Api.csproj" Id="b4d8cfe0-d356-4c67-a073-aeeb787e8e50" />
+  <Project Path="Snapcart.Application/Snapcart.Application.csproj" Id="7170eb29-6ac2-408e-9578-012dffd49a94" />
+  <Project Path="Snapcart.Domain/Snapcart.Domain.csproj" Id="739fff94-b7f6-4535-88ef-70335adb9f1d" />
+  <Project Path="Snapcart.Infrastructure/Snapcart.Infrastructure.csproj" Id="8abfce51-4948-4a1e-9b82-e648f14560f0" />
+  <Project Path="Snapcart.Web/snapcart.web.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+</Solution>
