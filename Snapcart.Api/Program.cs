@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Snapcart.Application.Interfaces;
+using Snapcart.Application.Services;
 using Snapcart.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,8 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<SnapcartDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+var githubModelsToken = builder.Configuration["Tokens:GithubModels"]!;
+builder.Services.AddSingleton<IDetectProductService>(new DetectProductService(githubModelsToken));
 
 var app = builder.Build();
 
@@ -17,6 +23,8 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

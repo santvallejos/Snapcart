@@ -82,3 +82,4 @@ desktop.ini
 *.pfx
 *.key
 appsettings.Development.json
+appsettings.json

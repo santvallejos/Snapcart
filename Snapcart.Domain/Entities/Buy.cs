@@ -9,7 +9,7 @@ namespace Snapcart.Domain.Entities
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
         public Guid ListId { get; set; }
-        public DateTime? PurchaseCompletedAt { get; set; }
+        public DateTime PurchaseCompletedAt { get; set; }
         public string? SupermarketName { get; set; }
 
         public User User { get; set; }

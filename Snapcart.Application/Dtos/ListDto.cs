@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Snapcart.Domain.Entities;
 
-namespace Snapcart.Domain.Entities
+namespace Snapcart.Application.Dtos
 {
-    public class List
+    public class ListDto
     {
-        public Guid Id { get; set; }
-        public Guid UserId { get; set; } 
-        public User User { get; set; }
+        public Guid UserId { get; set; }
         public List<Product> Products { get; set; } = new List<Product>();
         public int? TotalPrice { get; set; }
     }
