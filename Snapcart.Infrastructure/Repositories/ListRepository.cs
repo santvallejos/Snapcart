@@ -24,6 +24,13 @@ namespace Snapcart.Infrastructure.Repositories
             return await _db.Lists.Where(l => l.UserId == userId).ToListAsync();
         }
 
+        public async Task<List?> GetActiveListByUserIdAsync(Guid userId)
+        {
+            return await _db.Lists
+                .Include(l => l.Products)
+                .FirstOrDefaultAsync(l => l.UserId == userId && l.IsActive);
+        }
+
         public async Task<List?> GetListByIdAsync(Guid Id)
         {
             return await _db.Lists.FindAsync(Id);

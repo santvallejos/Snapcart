@@ -2,5 +2,5 @@
 
 public interface IDetectProductService
 {
-    Task<string> DetectProductAsync(Stream imageStream, string fileName);
+    Task<string> DetectProductAsync(Stream imageStream, string fileName, IEnumerable<string>? productNames = null);
 }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Snapcart.Infrastructure.Data;
@@ -11,9 +12,11 @@ using Snapcart.Infrastructure.Data;
 namespace Snapcart.Infrastructure.Migrations
 {
     [DbContext(typeof(SnapcartDbContext))]
-    partial class SnapcartDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260227212547_AddIsInCartAndIsActive")]
+    partial class AddIsInCartAndIsActive
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

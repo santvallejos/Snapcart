@@ -15,6 +15,7 @@ namespace Snapcart.Domain.Entities
         public int? Quantity { get; set; }
         public int? Price { get; set; }
         public string? Category { get; set; }
+        public bool IsInCart { get; set; }
 
         public Guid ListId { get; set; }
         public List List { get; set; }
