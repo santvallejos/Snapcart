@@ -1,30 +1,39 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi;
 using Snapcart.Application.Interfaces;
 using Snapcart.Application.Services;
 using Snapcart.Infrastructure.Data;
+using Snapcart.Infrastructure.Interfaces;
+using Snapcart.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Snapcart API", Version = "v1" });
+});
 builder.Services.AddDbContext<SnapcartDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var githubModelsToken = builder.Configuration["Tokens:GithubModels"]!;
 builder.Services.AddSingleton<IDetectProductService>(new DetectProductService(githubModelsToken));
 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Snapcart API V1");
+    });
 }
 
 app.UseHttpsRedirection();

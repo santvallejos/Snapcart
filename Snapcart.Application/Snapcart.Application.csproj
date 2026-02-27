@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Snapcart.Domain\Snapcart.Domain.csproj" />
+    <ProjectReference Include="..\Snapcart.Infrastructure\Snapcart.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
