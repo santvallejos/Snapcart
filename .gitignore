@@ -83,3 +83,5 @@ desktop.ini
 *.key
 appsettings.Development.json
 appsettings.json
+
+.github
